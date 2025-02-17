@@ -1,2 +1,4 @@
 [build]
   command = "bun install && bun run build"
+  publish = "dist"
+  environment = { NODE_VERSION = "20", BUN_VERSION = "1.0.30" }
