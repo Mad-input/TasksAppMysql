@@ -103,15 +103,17 @@ function Board({currentBoard}) {
             </>
             }
             {
-                FormOptions.show && <FormBoard 
-                                        FormOptions={FormOptions} 
-                                        currentBoard={currentBoard} 
-                                        closeForm={setFormOptions}
-                                        createTask={createTask}
-                                        updateTask={updateTask}
-                                        deleteTask={deleteTask}
-                                        taskContainerRef={taskContainerRef}
-                                        ></FormBoard>
+                FormOptions.show 
+                && 
+                <FormBoard 
+                    FormOptions={FormOptions} 
+                    currentBoard={currentBoard} 
+                    closeForm={setFormOptions}
+                    createTask={createTask}
+                    updateTask={updateTask}
+                    deleteTask={deleteTask}
+                    taskContainerRef={taskContainerRef}
+                    ></FormBoard>
             }
         </div>
      );
