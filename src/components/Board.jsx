@@ -4,19 +4,21 @@ import FooterBoard from './FooterBoard.jsx';
 import ListTasks from './ListTasks.jsx';
 import FormBoard from './FormBoard.jsx';
 
+const {VITE_API_URL: APIURL = 'http://localhost:3000'} = import.meta.env
+
 
 
 function Board({currentBoard}) {
-    const {data: {result}, loading, error} = useFetch(`http://localhost:3000/board/${currentBoard}`, 'get')
+    const {data: {result}, loading, error} = useFetch(`${APIURL}/board/${currentBoard}`, 'get')
     const [FormOptions, setFormOptions] = useState({mode: "create", show: false})
 
-    const {data: dataTasks, loading: loadindTasks, error: errorTasks} = useFetch(`http://localhost:3000/tasks/${currentBoard}`, 'get')
+    const {data: dataTasks, loading: loadindTasks, error: errorTasks} = useFetch(`${APIURL}/tasks/${currentBoard}`, 'get')
     const [tasks, setTasks] = useState([])
     const taskContainerRef = useRef(null)
 
     const createTask = (task) => {
     
-        fetch("http://localhost:3000/create/task", {
+        fetch(`${APIURL}/create/task`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +31,7 @@ function Board({currentBoard}) {
 
     const updateTask = (task) => {
         try {
-            fetch(`http://localhost:3000/update/task/${task.id}`, {
+            fetch(`${APIURL}/update/task/${task.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -49,7 +51,7 @@ function Board({currentBoard}) {
 
     const deleteTask = (id) => {
         try {
-            fetch(`http://localhost:3000/delete/task/${id}`, {
+            fetch(`${APIURL}/delete/task/${id}`, {
                 method: "DELETE"
             })
             const newTasks = tasks.filter(task => task.id !== id)
