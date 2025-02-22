@@ -359,9 +359,13 @@ body {
             font-size: 16px;
             cursor: pointer;
             transition: .2s ease all;
+            position: relative;
 
             &.selected {
               border-color: var(--focus-border-color);
+              .checkIcon {
+                display: block;
+              }
             }	
 
             .tag {
@@ -388,6 +392,13 @@ body {
               &.donot {
                 background: var(--tag-bg-donot);
               }
+            }
+
+            .checkIcon {
+              position: absolute;
+              right: 10px;
+              color: var(--focus-border-color);
+              display: none;
             }
           }
         }
