@@ -34,6 +34,10 @@ body {
 }
 
 .board {
+  width:  500px;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
   .board-header {
     display: flex;
     gap: 10px;
@@ -203,7 +207,7 @@ body {
     background: #fff;
     border-radius: 10px;
     padding: 20px;
-    width: 40%;
+    width: min(100%, 600px);
     position: relative;
     .header-form {
       display: flex;
@@ -312,6 +316,10 @@ body {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+
+            @media (width < 600px) {
+              grid-template-columns: 1fr;
+            }
           }
 
           .state {
