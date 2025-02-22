@@ -1,12 +1,10 @@
 import Task from "./Task";
 
-function ListTasks({handleCLickTask, tasks, loading, error, taskContainerRef}) {
+function ListTasks({handleCLickTask, tasks, taskContainerRef}) {
     
     
     return ( 
         <ul className="tasks" ref={taskContainerRef}>
-            {loading && <span>loading...</span>}
-            {error && <span>error...</span>}
             {
                 tasks && tasks.length > 0 
                 ? tasks.map((task) => (

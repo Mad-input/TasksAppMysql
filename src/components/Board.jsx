@@ -12,7 +12,7 @@ function Board({currentBoard}) {
     const {data: {result}, loading, error} = useFetch(`${APIURL}/board/${currentBoard}`, 'get')
     const [FormOptions, setFormOptions] = useState({mode: "create", show: false})
 
-    const {data: dataTasks, loading: loadindTasks, error: errorTasks} = useFetch(`${APIURL}/tasks/${currentBoard}`, 'get')
+    const {data: dataTasks} = useFetch(`${APIURL}/tasks/${currentBoard}`, 'get')
     const [tasks, setTasks] = useState([])
     const taskContainerRef = useRef(null)
 
@@ -79,7 +79,7 @@ function Board({currentBoard}) {
 
     return ( 
         <div className="board">
-            {loading && <span>loading...</span>}
+            {loading && <div className='loader'></div>}
             {error && <span>Error!</span>}
             {result && result.length > 0 && 
             <>
@@ -95,8 +95,6 @@ function Board({currentBoard}) {
                 <ListTasks
                             handleCLickTask={handleCLickTask}
                             tasks={tasks}
-                            error={errorTasks}
-                            loading={loadindTasks}
                             taskContainerRef={taskContainerRef}  
                             ></ListTasks>
                 <FooterBoard handleCreateTask={handleCreateTask}></FooterBoard>
